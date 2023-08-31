@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<form action="/devskills/<%= devskill.id %>?_method=PUT" method="POST">
+  <input type="text" name="devskill" value="<%= devskill.devskill %>"><br>
+  <label>
+    <input type="checkbox" name="done" <%= devskill.done ? 'checked' : '' %>>
+    Completed
+  </label><br>
+  <button type="submit">Update Dev-Skill</button>
+</form>
+
+<%- include('../partials/footer') %>

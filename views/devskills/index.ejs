@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Express Dev-Skills</title>
-</head>
-<body>
-    <a href = "/">Home</a>
-    <h1>All Dev-Skills</h1>
-     <ul>
-       <% devskills.forEach(function(d) { %>
-         <li>
-          <a href="/devskills/<%= d.id %>"><%= d.devskill %></a>
-             - 
-           <%= d.done ? 'done' : 'not done' %>
-         </li>
-       <% }); %>
-     </ul>
-</body>
-</html>
+<%- include('../partials/header') %>
+
+<h3>Dev-Skils as of <%= time %></h3>
+
+<ul>
+  <% devskills.forEach(function(d) { %>
+    <li>
+      <form
+        action="/devskills/<%= d.id %>?_method=DELETE"
+        method="POST"
+        class="delete-form"
+      >
+        <button type="submit">X</button>
+      </form>
+      <a href="/devskills/<%= d.id %>"><%= d.devskill %></a>
+      - 
+      <%= d.done ? 'done' : 'not done' %>
+    </li>
+  <% }); %>
+</ul>
+<a href="/devskills/new">Add Dev-Skill</a>
+
+  
+<%- include('../partials/footer') %>
